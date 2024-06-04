@@ -1,0 +1,18 @@
+{
+  "name": "PhoneShopProject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SoknatProgramming/PhoneShopProject.git",
+  "author": "SoknatProgramming <soknatsann@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev" : "nodemon src/index.ts",
+    "build" : "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
