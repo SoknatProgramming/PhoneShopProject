@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Error from '../interfaces/error.interface';
 
-const errormMiddleware = (
+const errorMiddleware = (
   error: Error,
   req: Request,
   res: Response,
@@ -12,4 +12,4 @@ const errormMiddleware = (
   res.status(status).json({ status, message });
 };
 
-export default errormMiddleware;
+export default errorMiddleware;
