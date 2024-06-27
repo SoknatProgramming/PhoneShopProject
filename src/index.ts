@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
+import routes from './routes';
 import errorMiddleware from './middleware/error.middleware';
 import config from './config';
 
@@ -30,35 +31,15 @@ app.use(
     // store: ... , // Redis, Memcached, etc. See below.
   }),
 );
+
+app.use('/api', routes);
 //Adding routing for / path
 app.get('/', (req: Request, res: Response) => {
-  throw new Error('Error Exist');
   res.json({
     message: 'Hello World',
   });
 });
-// Post Request
-app.post('/', (req: Request, res: Response) => {
-  console.log(req.body);
-  res.json({
-    message: 'Hello World from post',
-    data: req.body,
-  });
-});
 
-//test DB
-// db.connect().then((client) => {
-//   return client
-//     .query('SELECT NOW()')
-//     .then((res) => {
-//       client.release();
-//       console.log(res.rows);
-//     })
-//     .catch((err) => {
-//       client.release();
-//       console.log(err.stack);
-//     });
-// });
 app.use(errorMiddleware);
 
 app.use((_req: Request, res: Response) => {
